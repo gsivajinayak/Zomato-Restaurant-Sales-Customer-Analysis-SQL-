@@ -193,36 +193,3 @@ FROM orders;
 SELECT cust_id, order_id, SUM(sales_amount) OVER (PARTITION BY cust_id ORDER BY order_date) AS running_total
 FROM orders;
 
---  Assign row numbers to orders per customer:
-
-SELECT cust_id, order_id, ROW_NUMBER() OVER (PARTITION BY cust_id ORDER BY order_date) AS row_num
-FROM orders;
-
--- Calculate average order value per restaurant with a moving average
-SELECT rest_id, order_id, 
-AVG(sales_amount) OVER (PARTITION BY rest_id ORDER BY order_date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS moving_avg
-FROM orders;
-
-
-
---  6️⃣ Advanced Analysis : - 
-
-
--- Identify the most frequently ordered food items:
-
-SELECT f.item, COUNT(o.order_id) AS order_count 
-FROM orders o
-JOIN menu m ON o.food_id = m.food_id
-JOIN food f ON m.food_id = f.food_id
-GROUP BY f.item
-ORDER BY order_count DESC LIMIT 5;
-
-
---  Find the restaurant with the highest total revenue:
-
-SELECT r.rest_name, SUM(o.sales_amount) AS total_revenue FROM orders o
-JOIN restaurants r ON o.rest_id = r.rest_id
-GROUP BY r.rest_name ORDER BY total_revenue DESC LIMIT 1;
-
-
-
