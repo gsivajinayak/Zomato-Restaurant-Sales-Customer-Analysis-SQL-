@@ -183,13 +183,3 @@ SELECT rest_id, COUNT(order_id) AS total_orders,
 FROM orders
 GROUP BY rest_id;
 
--- Show cumulative sales per restaurant over time:
-
-SELECT rest_id, order_date, SUM(sales_amount) OVER (PARTITION BY rest_id ORDER BY order_date) AS cumulative_sales
-FROM orders;
-
--- Calculate running total of orders per customer:
-
-SELECT cust_id, order_id, SUM(sales_amount) OVER (PARTITION BY cust_id ORDER BY order_date) AS running_total
-FROM orders;
-
