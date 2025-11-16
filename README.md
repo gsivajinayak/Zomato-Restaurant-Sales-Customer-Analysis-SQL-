@@ -64,14 +64,8 @@ Using **joins**, **aggregations**, **subqueries**, **CTEs**, and **window functi
 ### 🔹 Window Function Analysis
 - Ranking restaurants by total orders.
 - Cumulative sales over time.
-- Running totals & moving averages.
-- Row numbering per customer.
 
-### 🔹 Advanced Findings
-- Most frequently ordered food items.
-- Restaurant with highest overall revenue.
 
----
 
 ## 🧩 Tech Stack
 - **SQL:** PostgreSQL   
