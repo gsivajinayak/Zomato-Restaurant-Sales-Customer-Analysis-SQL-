@@ -63,7 +63,7 @@ Using **joins**, **aggregations**, **subqueries**, **CTEs**, and **window functi
 
 ### 🔹 Window Function Analysis
 - Ranking restaurants by total orders.
-- Cumulative sales over time.
+
 
 
 
